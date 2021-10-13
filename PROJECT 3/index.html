@@ -5,36 +5,65 @@
 -Add a "Submit" button to the form, and use the "onsubmit" attribute to call your JavaScript function. -->
 
 
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Problem 3</title>
-
-<style>
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
 </head>
-
 <body>
-<h1>Guess The Number</h1>
+<p>Please enter  a number between 1 and 100 and you can try for 5 times</p>
 
-<p>A user has three tries to guess the number, 
-    between 1-100, that the computer picked</p>
+Guess the Number: <input type="number" id="guess">
+<input type="submit" value="submit" onclick="guessNumber()">
 
-    
-    
-   
-      Enter number: <input type="number" name="fname" id="guess">
-      <input type="submit" value="Submit" onclick="myFunction()">
- 
-    
+<p id="lastGuess"></p>
+<p id="lowHigh"></p>
+<p id="win"></p>
 
 
 <script>
+let lastGuess = document.getElementById("lastGuess");
+let lowHigh = document.getElementById("lowHigh");
+let win = document.getElementById("win");
 
+let userNumber =100;
+let counter = 1;
+let maxTries = 5;
+let randomNumber =  Math.floor(Math.random() * userNumber + 1);
 
+let message;
 
-</script>
-</body>
-</html>  
+function guessNumber() {
+let guess = parseInt(document.getElementById("guess").value)
+if(counter === 1) {
+lastGuess.textContent = "Previous number: "
+}
+lastGuess.textContent += guess + " ";
+
+if(counter !== maxTries){
+if(guess === randomNumber){
+message = `CONGRATULATIONS YOU WIN, YOUR NUMBER IS
+               ${guess}`
+win.innerHTML= message
+counter++;
+} else if(guess > randomNumber) {
+
+message = `Try to guess lower number last number`
+               
+lowHigh.innerHTML = message;
+counter++;
+
+}else if(guess <  randomNumber) {
+
+message = `Try higher number than last number`
+  lowHigh.innerHTML = message;             
+counter++;
+} else  {
+message = `You lost, computer number is ${randomNumber}`
+    win.innerHTML = message
+}
+}
+}
