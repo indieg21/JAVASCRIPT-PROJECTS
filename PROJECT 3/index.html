@@ -17,7 +17,7 @@
 <p>Please enter  a number between 1 and 100 and you can try for 5 times</p>
 
 Guess the Number: <input type="number" id="guess">
-<input type="submit" value="submit" onclick="guessNumber()">
+<button type="submit" onclick="guessNumber()">Submit Guess</button>
 
 <p id="lastGuess"></p>
 <p id="lowHigh"></p>
@@ -38,12 +38,15 @@ let message;
 
 function guessNumber() {
 let guess = parseInt(document.getElementById("guess").value)
+
+console.log(counter)
+console.log(randomNumber)
 if(counter === 1) {
 lastGuess.textContent = "Previous number: "
 }
 lastGuess.textContent += guess + " ";
 
-if(counter !== maxTries){
+if(counter <= maxTries){
 if(guess === randomNumber){
 message = `CONGRATULATIONS YOU WIN, YOUR NUMBER IS
                ${guess}`
@@ -51,7 +54,7 @@ win.innerHTML= message
 counter++;
 } else if(guess > randomNumber) {
 
-message = `Try to guess lower number last number`
+message = `Try to guess lower number then last number`
                
 lowHigh.innerHTML = message;
 counter++;
@@ -62,8 +65,15 @@ message = `Try higher number than last number`
   lowHigh.innerHTML = message;             
 counter++;
 } else  {
-message = `You lost, computer number is ${randomNumber}`
+message = `You won the game, computer guess is ${randomNumber}`
     win.innerHTML = message
 }
+} else {
+message = `You lost the game, computer guess is ${randomNumber}`
+    win.innerHTML = message
 }
+
 }
+</script>
+</body>
+</html>
