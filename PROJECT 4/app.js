@@ -41,11 +41,11 @@ function getResult() {
   if (computerChoice === "rock" && userChoice  === "paper") {
     result = "you win!"
 }
-if (computerChoice === "rock" && userChoice  === "scissor") {
+if (computerChoice === "rock" && userChoice  === "scissors") {
   result = "you lost!"
 }
 
-if (computerChoice === "paper" && userChoice  === "scissor") {
+if (computerChoice === "paper" && userChoice  === "scissors") {
   result = "you win!"
 }
 
