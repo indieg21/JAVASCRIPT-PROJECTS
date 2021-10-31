@@ -23,41 +23,48 @@ letting them know if they got it right/wrong (give them the correct answer). -->
 
     <h1>multiple Choice Game</h1>
     
-<form name="quiz" id="quiz">
     <div>
         <p>1. What is the largest city in New York?</p>
-        <p><input type="radio" name="question1" value="Albany">A. Albany</p>
-        <p><input type="radio" name="question1" value="Buffalo">B. Buffalo</p>
-        <p><input type="radio" name="question1" value="New York City">C. New York City</p>
-        <p><input type="radio" name="question1" value="Rochester">D. Rochester</p>
-        <h2>Answer: <span id="answer"></span></h2>
-        <button id="result">answer</button>
+        <p><input type="radio" class="answer" name="question1" value="Albany">A. Albany</p>
+        <p><input type="radio" class="answer" name="question1" value="Buffalo">B. Buffalo</p>
+        <p><input type="radio" class="answer" name="question1" value="New York City">C. New York City</p>
+        <p><input type="radio" class="answer" name="question1" value="Rochester">D. Rochester</p>
+
+        <input type="button" name="" value="Submit" onclick="check()">
+
+    <div class="result" display="hidden"></div>
     </div>
 
     <div>
         <p>2. What is the Capital of France?</p>
-        <p><input type="radio" name="question2" value="Boston">A. Boston</p>
-        <p><input type="radio" name="question2" value="Paris">B. Paris</p>
-        <p><input type="radio" name="question2" value="Main">C. Main</p>
-        <p><input type="radio" name="question2" value="Italy">D. Italy</p>
-        <h2>Answer: <span id="answer"></span></h2>
-        <button id="result">answer</button>
+        <p><input type="radio" class="answer" name="question2" value="Boston">A. Boston</p>
+        <p><input type="radio" class="answer" name="question2" value="Paris">B. Paris</p>
+        <p><input type="radio" class="answer" name="question2" value="Main">C. Main</p>
+        <p><input type="radio" class="answer" name="question2" value="Italy">D. Italy</p>
+
+        <input type="button" name="" value="Submit" onclick="check()">
+
+    <div class="result" display="hidden"></div>
     </div>
 
     <div>
         <p>3. How many boroughs are in New York City?</p>
-        <p><input type="radio" name="question2" value="Two">A. Two</p>
-        <p><input type="radio" name="question2" value="Five">B. Five</p>
-        <p><input type="radio" name="question2" value="Seven">C. Seven</p>
-        <p><input type="radio" name="question2" value="Four">D. Four</p>
-        <h2>Answer: <span id="answer"></span></h2>
-        <button id="result">answer</button>
+        <p><input type="radio" class="answer" name="question3" value="Two">A. Two</p>
+        <p><input type="radio" class="answer" name="question3" value="Five">B. Five</p>
+        <p><input type="radio" class="answer" name="question3" value="Seven">C. Seven</p>
+        <p><input type="radio" class="answer" name="question3" value="Four">D. Four</p>
+
+          <input type="button" name="" value="Submit" onclick="check()">
+
+    <div class="result" display="hidden"></div>
+
     </div>
 
+  
 
 
-</form>
+
  
-<script src="app.js" charset="utf-8"></script>
+<script src="script.js" charset="utf-8"></script>
 </body>
 </html>  
