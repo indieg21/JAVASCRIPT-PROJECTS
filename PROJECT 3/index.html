@@ -6,7 +6,7 @@
 
 Summary
 
-Create a an input field to accept the guessing number. Create a button for submit, includes the onclick attributes. Now
+Create an input field to accept the guessing number. Create a button for submit, includes the onclick attributes. Now
 everytime we click on the button to guess the number, the guess number function will execute. 
 Create 3 p tags w/ id Which will display the message for each command-->
 
@@ -53,26 +53,26 @@ Create 3 p tags w/ id Which will display the message for each command-->
         }
         lastGuess.textContent += guess + " ";
 
-        if (counter <= maxTries) {
+        if (counter < maxTries) {
+            
           if (guess === randomNumber) {
             message = `CONGRATULATIONS YOU WIN, YOUR NUMBER IS
                ${guess}`;
             win.innerHTML = message;
             counter++;
-          } else if (guess > randomNumber) {
+            } else if (guess > randomNumber) {
             message = `Try to guess lower number then last number`;
 
             lowHigh.innerHTML = message;
             counter++;
-          } else if (guess < randomNumber) {
+            } else if (guess < randomNumber) {
             message = `Try higher number than last number`;
             lowHigh.innerHTML = message;
             counter++;
-          } else {
-            message = `You won the game, computer guess is ${randomNumber}`;
-            win.innerHTML = message;
-          }
-        } else {
+            } 
+        } 
+        
+        else {
           message = `You lost the game, computer guess is ${randomNumber}`;
           win.innerHTML = message;
         }
