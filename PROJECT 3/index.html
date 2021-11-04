@@ -2,78 +2,81 @@
 -Whenever they guess, let them know if their guess is too high, or too low.
 -After their third guess, reveal the number the computer chose to them, and let them know if they got it right or wrong.
 -Use an HTML form to create an input input field for the user to enter their guess
--Add a "Submit" button to the form, and use the "onsubmit" attribute to call your JavaScript function. -->
+-Add a "Submit" button to the form, and use the "onsubmit" attribute to call your JavaScript function.
 
+Summary
+
+Create a an input field to accept the guessing number. Create a button for submit, includes the onclick attributes. Now
+everytime we click on the button to guess the number, the guess number function will execute. 
+Create 3 p tags w/ id Which will display the message for each command-->
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Number Guessing Game</title>
-</head>
-<body>
-<p>Please enter  a number between 1 and 100 and you can try for 5 times</p>
+  </head>
+  <body>
+    <p>Please enter a number between 1 and 100 and you can try for 5 times</p>
 
-Guess the Number: <input type="number" id="guess">
-<button type="submit" onclick="guessNumber()">Submit Guess</button>
+    Guess the Number: <input type="number" id="guess" />
+    <button type="submit" onclick="guessNumber()">Submit Guess</button>
 
-<p id="lastGuess"></p>
-<p id="lowHigh"></p>
-<p id="win"></p>
+    <p id="lastGuess"></p>
+    <p id="lowHigh"></p>
+    <p id="win"></p>
 
+    <script>
+      let lastGuess = document.getElementById("lastGuess"); // the dom
+      let lowHigh = document.getElementById("lowHigh");
+      let win = document.getElementById("win");
 
-<script>
-let lastGuess = document.getElementById("lastGuess");
-let lowHigh = document.getElementById("lowHigh");
-let win = document.getElementById("win");
+      let counter = 1; // starts at 1
+      let maxTries = 5; // max tries
+      let randomNumber = Math.floor(Math.random() * 100 + 1); // call number between 1-100
 
-let userNumber =100;
-let counter = 1;
-let maxTries = 5;
-let randomNumber =  Math.floor(Math.random() * userNumber + 1);
+      let message; // empty varible message.
 
-let message;
+      function guessNumber() {
+        // once someone clicks the button the function will run
+        let guess = parseInt(document.getElementById("guess").value); // grabbing the value convert that to the number that is being gussed
 
-function guessNumber() {
-let guess = parseInt(document.getElementById("guess").value)
+        //console.log(counter)
+        //console.log(randomNumber)
 
-console.log(counter)
-console.log(randomNumber)
-if(counter === 1) {
-lastGuess.textContent = "Previous number: "
-}
-lastGuess.textContent += guess + " ";
+        // If statement will display the message based on high, low or win. Depending on the outcome of each guess.
+        if (counter === 1) {
+          // starting the game. Previous number will display w/ the value of current guessed number
+          lastGuess.textContent = "Previous number: ";
+        }
+        lastGuess.textContent += guess + " ";
 
-if(counter <= maxTries){
-if(guess === randomNumber){
-message = `CONGRATULATIONS YOU WIN, YOUR NUMBER IS
-               ${guess}`
-win.innerHTML= message
-counter++;
-} else if(guess > randomNumber) {
+        if (counter <= maxTries) {
+          if (guess === randomNumber) {
+            message = `CONGRATULATIONS YOU WIN, YOUR NUMBER IS
+               ${guess}`;
+            win.innerHTML = message;
+            counter++;
+          } else if (guess > randomNumber) {
+            message = `Try to guess lower number then last number`;
 
-message = `Try to guess lower number then last number`
-               
-lowHigh.innerHTML = message;
-counter++;
-
-}else if(guess <  randomNumber) {
-
-message = `Try higher number than last number`
-  lowHigh.innerHTML = message;             
-counter++;
-} else  {
-message = `You won the game, computer guess is ${randomNumber}`
-    win.innerHTML = message
-}
-} else {
-message = `You lost the game, computer guess is ${randomNumber}`
-    win.innerHTML = message
-}
-
-}
-</script>
-</body>
+            lowHigh.innerHTML = message;
+            counter++;
+          } else if (guess < randomNumber) {
+            message = `Try higher number than last number`;
+            lowHigh.innerHTML = message;
+            counter++;
+          } else {
+            message = `You won the game, computer guess is ${randomNumber}`;
+            win.innerHTML = message;
+          }
+        } else {
+          message = `You lost the game, computer guess is ${randomNumber}`;
+          win.innerHTML = message;
+        }
+      }
+    </script>
+  </body>
 </html>

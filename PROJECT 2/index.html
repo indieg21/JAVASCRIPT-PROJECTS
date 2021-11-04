@@ -1,8 +1,26 @@
-<!-- -Create a Github repository for this project. 
--The count starts at 0
--Have two buttons on the screen, one to increase (+) the count by 1, and one button to lower (-) the count by 1.
--Pressing the plus button increases the count by 1, pressing the minus button decreases by 1
--Create a Github repository for this project and write Git commits as you go. -->
+<!-- -Project 2: Color Switcher. 
+-Create an HTML select dropdown with at least 5 color options in it
+-use the "onchange" attribute so that every time a user selects a color 
+using the dropdown, it calls your JavaScript function that changes the 
+background color of the BODY to the color selected in the dropdown.
+SUMMARY
+
+Create a select dropdown menu using the onchange attribute to select the different value from the option list 
+& use that vaule to change the color of the body. 
+
+Onchange is an event & color is a function that I will be passing to the event. Everytime I will channge 
+the option (color) the function color will execute. The this.value will give me the value of the selected option (color)
+
+Create the menu list w/color options
+
+Create the function that will execute onchange event happening. Inside the function select the body from the dom & change the
+background color that is value.
+
+ select is the html form that will allow us to select different options. Onchnage attribute will allow us to 
+ call a function of color w/ this.value as the parameter. Any option that is selected this value will grab that value(color)
+
+ onchage event job is to call the function everytime the new option is selected.
+-->
 
 
 <html lang="en">
@@ -18,10 +36,10 @@
             transition: all 1.5s;
         }
     </style>
-  </head>                                                                                                                                        
+  </head>                                                                                                                                         
   <body>
 
-    <select onchange="color(this.value)">
+    <select onchange="color(this.value)"> 
         <option value="">Color</option>
         <option value="blue">Blue</option>
         <option value="green">Green</option>

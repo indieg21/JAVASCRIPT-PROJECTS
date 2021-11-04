@@ -1,3 +1,11 @@
+<!--  Project 5: Build a clock using JavaScript.
+
+Requirements:
+-Create a Github repository for this project. 
+-Display the hours, minutes, and seconds.
+-The clock should run by itself. (Hint: look at JavaScript setInterval function) -->
+
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -25,18 +33,18 @@
 </head>
 
 <body>
-  <div id="clock">
+  <div id="clock">  dom
   </div>
   <script>
-      function clock() {
-      let date = new Date();
+      function clock() { 
+      let date = new Date(); // Varible is date will store the new date object.
       
-      let hrs = date.getHours();
+      let hrs = date.getHours(); // apply all the functions to the date object. 
       let mins = date.getMinutes();
       let secs = date.getSeconds();
       let period = "AM";
     
-      if (hrs == 0) hrs = 12;
+      if (hrs == 0) hrs = 12; // if else comparsions. Based on that add am or pm
       if (hrs > 12) {
         hrs = hrs - 12;
         period = "PM";
@@ -46,9 +54,9 @@
       mins = mins < 10 ? `0${mins}` : mins;
       secs = secs < 10 ? `0${secs}` : secs;
     
-      let time = `${hrs}:${mins}:${secs} ${period}`;
-      setInterval(clock, 1000);
-      document.getElementById("clock").innerText = time;
+      let time = `${hrs}:${mins}:${secs} ${period}`; // to display hrs, min, sec using string literal. Allows to add all together
+      setInterval(clock, 1000); // setInterval a builtin fucntion which will call every sec. 1000 is a second
+      document.getElementById("clock").innerText = time; // in the dom pass the time varible to display the time
     }
     
     clock();
