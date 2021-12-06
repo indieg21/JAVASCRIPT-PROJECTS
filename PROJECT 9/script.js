@@ -2,15 +2,23 @@
 // 2. function to add todos.
 // 3. function to store todos to localstorage.
 
-let todos;
-
-let getData = JSON.parse(localStorage.getItem("todos")); //reading data from localStorage
-if (Array.isArray(getData)) {
+let todos = [];
+let getData = JSON.parse(localStorage.getItem("todos")); // getting data from local storage
+if (Array.isArray(getData) && getData.length !== 0) {
+  // If getData is array and not empty then assing to the todos varaible.
   todos = getData;
 } else {
-  // it will save an empty array
-  todos = [];
-  localStore(todos);
+  // if getData is empty basically when localStorage is empty then fetch data from jsonplaceholder API using axios method
+  window.localStorage.removeItem("todos");
+  axios // Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser that also supports the ES6 Promise API.
+    .get("https://jsonplaceholder.typicode.com/todos?_limit=5") // get is the method to for axios object to get data from api. we pass url of api to the get method and it returns promise. to get data from promose we use then method.
+    .then((res) => {
+      // res (is response) in then method we pass the call back function. it gets response from Promise which is our data we can return.
+      localStore(res.data); // we save the data to local storage.
+      todos = JSON.parse(localStorage.getItem("todos")); //retrive data from local storage and assign to todos.
+      render(); // run the render function to display the data
+    })
+    .catch((err) => console.error(err));
 }
 
 let submitBtn = document.getElementById("add-todo"); //adding todo function.
@@ -18,7 +26,7 @@ submitBtn.addEventListener("click", addTodo);
 
 function addTodo() {
   let title = document.getElementById("todo-title").value; // reading the value from the input
-  let id = " " + new Date().getTime(); // creating a new id everytime we add a new task
+  let id = new Date().getTime(); // creating a new id everytime we add a new task
 
   todos.push({ title: title, id: id }); // pushing to the todo array (basically saving)
   console.log(todos);
@@ -34,7 +42,7 @@ function localStore(todos) {
 
 function deleteTodo(e) {
   // deleting tasks from the todo list
-  let targetId = e.target.id;
+  let targetId = parseInt(e.target.id);
   todos = todos.filter((todo) => {
     if (todo.id === targetId) {
       return false;
@@ -48,7 +56,7 @@ function deleteTodo(e) {
 
 function updateTodo(e) {
   // updating the list
-  let targetIndex = e.target.id; // everything needs to be updated so that the new edit shows properly
+  let targetIndex = parseInt(e.target.id); // everything needs to be updated so that the new edit shows properly
   let saveIndex = document.getElementById("saveIndex");
   let saveEdit = document.getElementById("saveEdit");
   let addTodo = document.getElementById("add-todo");
@@ -74,7 +82,7 @@ function saveUpdate(e) {
   let title = document.getElementById("todo-title");
 
   todos.map((todo, idx) => {
-    if (saveIndex === todo.id) {
+    if (parseInt(saveIndex) === todo.id) {
       todos[idx] = { title: title.value, id: saveIndex };
     }
   });
